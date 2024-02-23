@@ -3,6 +3,7 @@ FROM openjdk:8
 # 指定存储卷, 任何向/tmp写入的信息都不会记录到容器存储层
 VOLUME /tmp
 # 拷贝运行JAR包
+#ARG JAR_FILE=target/jdemo-0.0.1-SNAPSHOT.jar
 ARG JAR_FILE=jdemo-0.0.1-SNAPSHOT.jar
 COPY ${JAR_FILE} /tmp/app.jar
 #COPY ./app.jar /tmp/app.jar

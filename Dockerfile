@@ -3,9 +3,9 @@ FROM openjdk:8
 # 指定存储卷, 任何向/tmp写入的信息都不会记录到容器存储层
 VOLUME /tmp
 # 拷贝运行JAR包
-#ARG JAR_FILE
-#COPY ${JAR_FILE} app.jar
-COPY ./app.jar /tmp/app.jar
+ARG JAR_FILE=target/jdemo-0.0.1-SNAPSHOT.jar
+COPY ${JAR_FILE} /tmp/app.jar
+#COPY ./app.jar /tmp/app.jar
 # 设置JVM运行参数， 这里限定下内存大小，减少开销
 ENV JAVA_OPTS="\
 -server \
@@ -17,3 +17,5 @@ ENV JAVA_OPTS="\
 ENV PARAMS=""
 # 入口点， 执行JAVA运行命令
 ENTRYPOINT ["sh","-c","java -jar $JAVA_OPTS /app.jar $PARAMS"]
+#ENTRYPOINT ["java -jar $JAVA_OPTS /app.jar"]
+

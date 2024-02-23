@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # 获取当前目录下的所有 jar 包名
+source /etc/profile
 jar_files=$(ls *.jar 2>/dev/null)
 APP_HOME=$(pwd)
 JVM_OPTS="-Dname=$jar_files  -Duser.timezone=Asia/Shanghai -Xms100m -Xmx120m -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=150m -XX:+HeapDumpOnOutOfMemoryError -XX:+PrintGCDateStamps  -XX:+PrintGCDetails -XX:NewRatio=1 -XX:SurvivorRatio=30 -XX:+UseParallelGC -XX:+UseParallelOldGC"
